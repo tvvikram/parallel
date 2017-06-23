@@ -4,7 +4,7 @@
 #include <sys/time.h>
 #include <math.h>
 
-#define N 100000000
+#define N 300000000
 void main()
 {
 	struct timeval startTime,endTime;
@@ -19,7 +19,7 @@ void main()
 		int num=omp_get_num_threads();
 		int id=omp_get_thread_num();
 		for(i=id;i<N;i+=num){
-				sum[id]+=i*i+sin(i)+cos(i)-i+sin(i)-cos(i);
+				sum[id]+=i*i+sin(i)+cos(i);//-i+sin(i)-cos(i);
 		}
 	}
 	for(i=0;i<4;i++){

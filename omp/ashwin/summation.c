@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <sys/time.h>
 #include <omp.h>
-#define N 100000000
+#define N 300000000
 void main()
 {
 	int i;
@@ -11,7 +11,7 @@ void main()
 	double runTime;
 	gettimeofday(&startTime,NULL);
 	for(i=0;i<N;i++){
-			sum+=i*i+sin(i)+cos(i)-i+sin(i)-cos(i);
+			sum+=i*i+sin(i)+cos(i);//-i+sin(i)-cos(i);
 	}
 	gettimeofday(&endTime,NULL);
 	runTime=(endTime.tv_sec * 1000 + endTime.tv_usec/1000)-
