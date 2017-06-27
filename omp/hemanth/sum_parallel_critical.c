@@ -4,19 +4,24 @@
 #include<string.h> 
 #include <math.h> 
 #include "omp.h"
-#define N 10000001
 void main(int argc, char *argv[]){
-	int i,id,th;
+	int i,id,th,N;
 	int x=atoi(getenv("OMP_NUM_THREADS"));
+	if(argc>1){
+		N=atoi(argv[1]);
+	}
+	else
+		N=101;
 	double s=0,sum[x];
-	memset(sum, 0, sizeof(int) * x);
+	memset(sum, 0, sizeof(double) * x);
 	int *num=(int*)malloc(N*sizeof(int));
 	struct timeval t1, t2;
     	double elapsedTime;
     	
 	
-	for(i=0;i<N; i++)
+	for(i=0;i<N; i++){
   		num[i]=i;
+  	}
  	
  	gettimeofday(&t1, NULL);
  	//start of parallel region
@@ -34,8 +39,6 @@ void main(int argc, char *argv[]){
  	}
  	//end of paralle region
  	gettimeofday(&t2, NULL);
- 	
- 	printf("\nsum  is:%lf\n",s);
  	elapsedTime = (t2.tv_sec * 1000 +t2.tv_usec /1000) - (t1.tv_sec *1000 + t1.tv_usec /1000) ;
- 	printf("time consumed %f\n",elapsedTime);
+ 	printf("%d %.3lf \n",th,elapsedTime);
 }
