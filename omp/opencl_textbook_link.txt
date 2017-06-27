@@ -1,0 +1,1 @@
+http://www.hds.bme.hu/~fhegedus/C++/Heterogeneous_computing_OpenCL.pdf
