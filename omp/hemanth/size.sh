@@ -1,10 +1,16 @@
-#!/bin/sh
+#!/bin/bash
+if [ $# -lt 4 ] 
+then 
+echo -e "please provide 4 arguments \nsyntax: ./script.sh filename start end steps" 
+exit 1
+fi
 export OMP_NUM_THREADS=4
 file=`basename -s .c $1`
-#echo $file
+start= $2
+end= $3
+steps=$4
 cc -fopenmp $1 -lm
-NUM='1000000 2000000 3000000 4000000 5000000'
-for i in $NUM
+for (( i=  star ; i <= end ; i +=steps ))
 do
 ./a.out $i >> $file.dat 
 done
